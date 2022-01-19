@@ -1,0 +1,131 @@
+#  Copyright 2021 CNM Ingenuity, Inc.
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+name: Assignment autograding
+on: push
+jobs:
+  create-issue:
+    if: github.run_number == 1
+    name: "Create an issue with to-do list"
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Create publish issue
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: 1. Publish on GitHub Pages
+          body: |-
+            See ["Personal Android Project: Proposal: Publish"](https://ddc-java.github.io/personal-android-project/proposal#publish) for instructions.
+
+            In a web browser:
+
+            1. [ ] Browse to [https://github.com/${{ github.repository }}/settings/pages](/${{ github.repository }}/settings/pages).
+            2. [ ] Set source branch to `main`, directory to `/docs`, and click **Save**.
+            3. [ ] Refresh page every 30 seconds until "Your site is published at ..." appears (instead of "Your site is ready to be published at ...").
+            4. [ ] Verify availability of GitHub Pages site at [https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}).
+
+      - name: Create clone issue
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: 2. Clone repository to local system
+          body: |
+            See ["Personal Android Project: Proposal: Clone repository"](https://ddc-java.github.io/personal-android-project/proposal#clone-repository) for instructions.
+
+            1. [ ] Browse to [https://github.com/${{ github.repository }}](https://github.com/${{ github.repository }}).
+            2. [ ] Click the **Code** button.
+            3. [ ] In the popup that appears, make sure the SSH option is selected, and click the clipboard icon on the right side.
+            4. [ ] In IntelliJ IDEA, click the **Get from VCS** button (in the welcome screen) or select the  **File/New/Project from Version Control** menu option (In the IntelliJ workspace).
+            5. [ ] Paste the clipboard contents in the **URL** field of the **Get from Version** dialog that appears.
+            6. [ ] Adjust the contents of the **Directory** field (if necessary), so that the it ends with `bootcamp\projects\${{ github.event.repository.name }}` or `bootcamp/projects/${{ github.event.repository.name }}`. (The last element is essential: please **do not** create a project directly in the `bootcamp\projects` directory.)
+            7. [ ] Click the **Clone** button. This will clone the repository and open it as a project in IntelliJ IDEA.
+
+      - name: Create edit issue
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: 3. Edit proposal
+          body: |
+            See ["Personal Android Project: Proposal: Edit proposal"](https://ddc-java.github.io/personal-android-project/proposal#edit-proposal) for instructions.
+
+            In IntelliJ IDEA:
+
+            1. [ ] Use the pull-down at the top of the **Project** tool window to change the current view to "Project".
+            2. [ ] Edit the `README.md` file of the project. On the first line, after the hash mark (aka pound sign, or `#`) and the space that follows it, replace the text that's there with the name of the app you propose to develop. (This doesn't have to be the final name.) Replace the paragraph below that line with a paragraph summarizing your proposed app.
+            3. [ ] Edit the `docs/_config.yml` file, changing the value of the `title` property to the name of your proposed app, the value of the `description` property to a one-sentence summary description of your proposed app, and the value of the `name` property indented below `author` to your name. Preserve any double quotes around text, as well as the indentation, as is.
+            4. [ ] Open the `docs/index.md` file.
+            5. [ ] In `docs/index.md`, edit the text of each section by following (and replacing) the instructions in that section. Do not modify the section headers, which start with two hash marks (`##`). Pay close attention not only to the content required in each section, but to the required _formatting_ of that content as well.
+
+
+      - name: Create project configuration issue
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: 4. Edit project configuration
+          body: |
+            See ["Personal Android Project: Proposal: Edit app name"](https://ddc-java.github.io/personal-android-project/proposal#edit-app-name) for instructions.
+
+            In IntelliJ IDEA:
+
+            1. [ ] Use the pull-down at the top of the **Project** tool window to change the current view to "Android".
+            2. [ ] In the **Project** tool window, expand `app`, then expand `java` inside that, then select `edu.cnm.deepdive.appstarter` (the one without any parentheses following it on the same line).
+            3. [ ] With the selection as described above, select the **Refactor/Rename** menu command.
+            4. [ ] In the **Warning** alert displayed next, click the **In Whole Project** button.
+            5. [ ] In the **Rename** dialog, replace "appstarter" in the first field with a variant of your intended app name that follows these rules:
+                * No uppercase letters.
+                * No spaces.
+                * No punctuation of any type.
+                * Digits are allowed, but the first character must be a letter.
+            6. [ ] Click the **Refactor** button.
+            7. [ ] If a refactoring preview appears in the lower-left of the screen, click the **Do Refactor** button that appears at the bottom.
+            8. [ ] In the **Project** tool window, verify that all of the packages directly inside the `java` directory that's inside `app` now end with the app name variant that you typed in the **Rename** window.
+            9. [ ] In the **Android** view of the **Project** tool window, expand the item you just renamed to show, and then select, `AppStarterApplication`.
+            10. [ ] With `AppStarterApplication` selected in the **Android** view, select the **Refactor/Rename** menu command.
+            11. [ ] In the edit field, change the "AppStarter" part of "AppStarterApplication" to the name of your app in `UpperCamelCase` (that is, starting with an uppercase character, and&mdash;if the name includes multiple words&mdash;joining the words together, with each word starting with an uppercase character). Be sure to keep the "Application" part at the end.
+            12. [ ] Click the **Refactor** button.
+            13. [ ] In the **Project** tool window, expand the `Gradle scripts` sub-tree and open the second `build.gradle` file that appears (the one followed by "Module: App_Starter.app" in parentheses).
+            14. [ ] Edit the value of the `applicationId` property (line 10 or so), so that it matches your new main package name---that is, with `edu.cnm.deepdive.`, followed by the app name variant you typed in the **Rename** dialog. Important: Make sure that this match is exact, including letter casing.
+            15. [ ] From the `Gradle scripts` sub-tree of the **Project** tool window, open the `gradle.properties` file.
+            16. [ ] Modify the value of the `appName` property, replacing `App Starter` with the name of your app as you would like to appear to the Android user. Be sure not to remove the equals sign! 
+            17. [ ] From the `Gradle scripts` sub-tree of the **Project** tool window, open the `settings.gradle` file.
+            18. [ ] Modify the value of the `rootProject.name` property from `personal-android-project` to the `lower-spinal-case` form (i.e. all lowercase, with dashes between words) of your app name. For example, if you specified `My Cool App` as your app name in the previous steps, you would specify `my-cool-app` here.
+            19. [ ] From the **Build** menu at the top of the window (in Windows or Linux Ubuntu) or the top of the screen (in OS X), select the **Rebuild Project** option.
+            20. [ ] Verify that you now see the `lower-spinal-case` form of your app name in the window title bar (on Windows or Ubuntu). If you still see "personal-android-project", verify that you completed all of the above steps. If you missed any of them, return to that point in the instructions, and complete all of the steps from there.
+
+      - name: Create commit & push issue
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: 5. Commit & push changes
+          body: |
+            See ["Personal Android Project: Proposal: Commit & push"](https://ddc-java.github.io/personal-android-project/proposal#commit--push) for instructions.
+
+            In IntelliJ IDEA:
+
+            1. [ ] Select the **Git/Commit** menu command (also available via the **Ctrl**+**K** keyboard shortcut on Windows & Linux, or ****&#8984;**+**K** on OS X) to display the modal (left image) or non-modal (right image) commit dialog. (You can set your modal/non-modal preference for this dialog in the **Version Control/Commit** settings, available via the **File/Settings** menu command.)
+            2. [ ] Click on the checkboxes as necessary to make sure that all files that appear in the changelist are selected.
+            3. [ ] Type a commit message in the designated field. (For now, "Initial commit" is just fine.)
+            4. [ ] Click the **Commit and Push** button (if using the modal commit dialog, click the pull-down beside the **Commit** button to access this command).
+
+      - name: Create review & refine issue
+        uses: actions-ecosystem/action-create-issue@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          title: 6. Review & refine
+          body: |
+            See ["Personal Android Project: Proposal: Review & refine"](https://ddc-java.github.io/personal-android-project/proposal#review--refine) for instructions.
+
+            1. [ ] After committing & pushing changes, and after waiting (~60 seconds) for the new content to be converted to HTML and published to the GitHub Pages website, browse to [https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}).
+            2. [ ] Review the content as it appears in GitHub pages. Pay attention not only to the text, but to the formatting as well.
+            3. [ ] Repeat the steps in the "Edit proposal" and "Commit & push changes" issues, as necessary.

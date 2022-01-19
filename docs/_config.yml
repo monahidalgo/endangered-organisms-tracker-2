@@ -1,0 +1,17 @@
+remote_theme: ddc-java/ddc-day
+repository_links:
+  enabled: false
+page_navigator:
+  enabled: false
+titles_from_headings:
+  enabled: false
+
+# Modify the contents below for the specific project. NOTE THE INDENTATION!
+
+title: "Android Project Proposal"
+description: "Trust me, it'll be cool!"
+author:
+  name: "Java+Android Student"
+
+# Do not change the following line.
+  copyright: true

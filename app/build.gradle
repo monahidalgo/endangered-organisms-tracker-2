@@ -1,0 +1,180 @@
+apply plugin: 'com.android.application'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+
+    compileSdkVersion = 31
+
+    //noinspection GroovyAssignabilityCheck
+    defaultConfig {
+
+        applicationId "edu.cnm.deepdive.appstarter"
+        minSdkVersion 26
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resValue "string", "app_name", appName
+
+    }
+
+    //noinspection GroovyAssignabilityCheck
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    //noinspection GroovyAssignabilityCheck
+    buildFeatures {
+        //noinspection GroovyAssignabilityCheck
+        viewBinding true
+        // Enable dataBinding if needed.
+        //noinspection GroovyAssignabilityCheck
+        // dataBinding true
+    }
+
+}
+
+dependencies {
+
+    // .jar-based libraries included in project
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Basic Android components
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+
+    // Fragment & navigation framework libraries
+    implementation 'androidx.fragment:fragment:1.4.0'
+    implementation "androidx.navigation:navigation-fragment:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui:$navigationVersion"
+
+    // Lifecycle (LiveData and ViewModel) libraries
+    def lifecycleVersion = '2.4.0'
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+
+    // Material Design components
+    implementation 'com.google.android.material:material:1.4.0'
+
+    // ReactiveX libraries
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.3'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+    // Room annotation processor, runtime library, and ReactiveX integration
+    def roomVersion = '2.4.0'
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-rxjava3:$roomVersion"
+
+    // Gson (Google JSON parser) library
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    // Retrofit (REST client) with ReactiveX & Gson integration
+    def retrofitVersion = '2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofitVersion"
+
+    // Picasso image retrieval library
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // OkHttp logging dependency
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    // Stetho (inspection) dependency
+    implementation 'com.facebook.stetho:stetho:1.6.0'
+
+    // Unit & UI testing libraries
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+}
+
+task generateApiDoc() {
+    group "reporting"
+    description "Generates all Javadoc."
+}
+
+android.applicationVariants.all { variant ->
+
+    def task = project.tasks.create("generate${variant.name.capitalize()}Javadoc", Javadoc) {
+
+        title "$appName (${project.android.defaultConfig.versionName})"
+        group "ApiDoc"
+        description "Generates Javadoc for $variant.name."
+
+        source = variant.sourceSets.collect { it.java.sourceFiles }.inject { m, i -> m + i }
+
+        doFirst {
+            classpath = project.files(
+                    file(projectDir)
+                            .toPath()
+                            .resolve("build/intermediates/javac/${variant.name}/classes"),
+                    variant.javaCompileProvider.get().classpath.files,
+                    project.android.getBootClasspath()
+            )
+        }
+
+        exclude '**/R'
+        exclude '**/R.**'
+        exclude '**/R\$**'
+        exclude '**/BuildConfig*'
+
+        destinationDir = file("$projectDir/../docs/api")
+
+        //noinspection GroovyAssignabilityCheck
+        options {
+            windowTitle = "$appName (${project.android.defaultConfig.versionName})"
+            memberLevel = JavadocMemberLevel.PROTECTED
+            linkSource = false
+            author = false
+            links 'https://docs.oracle.com/en/java/javase/11/docs/api/'
+            linksOffline 'https://developer.android.com/reference', "$projectDir/.."
+            // Modify the items below for specific libraries used.
+            links 'https://reactivex.io/RxJava/3.x/javadoc/'
+            links 'https://javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/'
+            links 'https://square.github.io/retrofit/2.x/retrofit/'
+            links 'https://square.github.io/picasso/2.x/picasso/'
+        }
+
+        if (JavaVersion.current().isJava8Compatible()) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+
+        failOnError true
+
+    }
+
+    task.dependsOn "assemble${variant.name.capitalize()}"
+    generateApiDoc.dependsOn task
+
+}
+
+String getLocalProperty(String name) {
+    return getProperty("$projectDir/local.properties", name)
+}
+
+static String getProperty(String filename, String name) {
+    Properties properties = new Properties()
+    properties.load(new FileInputStream(filename))
+    return properties.getProperty(name)
+}
+
+static String quoted(String input) {
+    return "\"$input\""
+}
