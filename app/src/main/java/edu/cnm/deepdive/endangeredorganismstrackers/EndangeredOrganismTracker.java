@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.appstarter;
+package edu.cnm.deepdive.endangeredorganismstrackers;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
@@ -8,7 +8,7 @@ import com.facebook.stetho.Stetho;
  * <strong>must</strong> be referenced in {@code AndroidManifest.xml}, or it will not be loaded and
  * used by the Android system.
  */
-public class AppStarterApplication extends Application {
+public class EndangeredOrganismTracker extends Application {
 
   @Override
   public void onCreate() {

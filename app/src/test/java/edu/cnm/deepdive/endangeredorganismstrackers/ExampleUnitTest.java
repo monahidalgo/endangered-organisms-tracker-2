@@ -1,4 +1,4 @@
-package ed.cnm.deepdive.appstarter;
+package edu.cnm.deepdive.endangeredorganismstrackers;
 
 import org.junit.Test;
 

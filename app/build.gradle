@@ -8,7 +8,7 @@ android {
     //noinspection GroovyAssignabilityCheck
     defaultConfig {
 
-        applicationId "edu.cnm.deepdive.appstarter"
+        applicationId "edu.cnm.deepdive.EndangeredOrganismsTracker"
         minSdkVersion 26
         targetSdkVersion 31
         versionCode 1

@@ -1,3 +1,3 @@
-# Android project proposal starter
+# Endangered Organism/Species Tracker 
 
-This is a project template for all phases&mdash;from proposal to final delivery&mdash;of the personal Android project in the [Deep Dive Coding](https://deepdivecoding.com/) [Java + Android bootcamp](https://deepdivecoding.com/java-android/).
+A GPS Tracker that specifies location, proximity of the endangered oraganism of plant or animal habitats.
