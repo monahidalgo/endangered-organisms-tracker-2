@@ -5,11 +5,11 @@ Photographs of Animal species in the areas the animal roams. In Plant Life there
 
 
 ## Intended Users 
-Students and Professional people will use this App. which would be College students doing research for class. Biologist, Scientists, Photographers, Land Management for National Parks can use this app.
-to help them identify the species they are wanting to see in the App. for their concerns. 
+* Students and which would be College students doing research for class. 
+    > A student found useful details in the App. that pertained to the Endangered Species she was researching for her class project. 
 
-A student story was she found useful details in the App. that pertained to the Endangered Species she was researching for her class project. 
-
+* Professional people will use this App. Biologist, Scientists, Photographers, Land Management for National Parks can use this app.
+to help them identify the species they are wanting to see in the App. for their concerns.
 
 ## Functionality
 
@@ -25,4 +25,4 @@ If the client component will need to access special services of the device (e.g.
 
 ## Stretch goals/possible enhancements 
 
-Possible enhancements ;
+Possible enhancements ; graphics images 
