@@ -18,7 +18,7 @@ to help them identify the species they are wanting to see in the App. for their 
  
 
 ## Persistent data
-A GPS Map tracker download, A GPS location of images weather conditions.
+A GPS Map tracker download, A GPS location of images weather conditions, Past searches saved, 
     
 ## Device/external services
 
@@ -26,4 +26,4 @@ If the client component will need to access special services of the device (e.g.
 
 ## Stretch goals/possible enhancements 
 
-Possible enhancements ; graphics images 
+Possible enhancements ; graphics images of recent species photographed
