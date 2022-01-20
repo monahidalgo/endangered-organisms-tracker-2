@@ -4,7 +4,8 @@ The App. has a GPS Tracker that specifies location & proximity of the endangered
 Photographs of Animal species in the areas the animal roams. In Plant Life there are sevaral endangered species.
 
 
-## Intended Users 
+## Intended Users & user stories
+
 * Students and which would be College students doing research for class. 
     > A student found useful details in the App. that pertained to the Endangered Species she was researching for her class project. 
 
@@ -13,7 +14,7 @@ to help them identify the species they are wanting to see in the App. for their 
 
 ## Functionality
 
-The App. will have photographs for the user to see and download with up to date information of weather conditions of the region/area for that kind of species they search for.  There will be a GPS tracker for the Endangered Species listed and with up to date details. There will be a comment section.
+* The App. will have photographs for the user to see and download with up to date information of weather conditions of the region/area for that kind of species they search for.  There will be a GPS tracker for the Endangered Species listed and with up to date details. There will be a comment section.
  
 
 ## Persistent data
