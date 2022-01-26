@@ -7,7 +7,7 @@ Photographs of Animal species in the areas the animal roams. In Plant Life there
 ## Intended Users & User stories
 
 * Students will use the App. which would be College students doing research for class. 
-    > As a student I found the App. useful in locating images pertained to the Endangered Species I was researching for for my class project. 
+    > As a student I found the App. useful in locating images pertained to the Endangered Species I was researching for my class project. 
 
 * Professional people will use this App. Biologist, Scientists, Photographers, Land Management for National Parks can use this app.
 to help them identify the species they are wanting to see in the App. for their concerns.
