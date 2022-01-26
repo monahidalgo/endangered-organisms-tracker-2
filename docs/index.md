@@ -8,10 +8,10 @@ Photographs of Animal species in the areas the animal roams. In Plant Life there
 
 * A college biology research student  
     > As a research biology student researching endangered organisms I want an easy to use App. save images and notes it is hard to keep track of notebooks and camera gear.  
-
-* Professional people will use this App. Biologist, Scientists, Photographers, Land Management for National Parks can use this app.
-to help them identify the species they are wanting to see in the App. for their concerns.
-    > I work in Land Management ...
+    
+* A Park Ranger employee
+    > I'm a Park Ranger employee at a State park I protect endangered species and it's habitat. I need an App for documenting videos, photographs and for my daily notes.
+    I would need the App. to share images and video to my supervisor of Land Management where I'm employed.
 ## Functionality
 
 * The App. will have photographs for the user to see and download with up to date information of weather conditions of the region/area for that kind of species they search for. 
@@ -21,8 +21,8 @@ to help them identify the species they are wanting to see in the App. for their 
 
 ## Persistent data
 * A GPS Map tracker download,
-* A GPS location of images weather conditions, 
-* Past searches saved, 
+* A GPS location of images 
+* Past searches saved
     
 ## Device/external services
 
