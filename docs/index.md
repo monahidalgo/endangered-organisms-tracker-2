@@ -12,7 +12,7 @@ Photographs of Animal species in the areas the animal roams. In Plant Life there
 * A Park Ranger employee
     > I'm a Park Ranger employee at a State park I protect endangered species and it's habitat. I need an App for documenting videos, photographs and for my daily notes.
     I would need the App. to share images and video to my supervisor of Land Management where I'm employed.
-  > 
+
 ## Functionality
 
 * The App. will have photographs for the user to see and download with up to date information of weather conditions of the region/area for that kind of species they search for. 
