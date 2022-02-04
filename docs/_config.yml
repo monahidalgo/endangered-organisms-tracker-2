@@ -1,4 +1,4 @@
-remote_theme: ddc-java/ddc-day
+remote_theme: /ddc-day
 repository_links:
   enabled: false
 page_navigator:
