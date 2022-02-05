@@ -8,7 +8,7 @@ import com.facebook.stetho.Stetho;
  * <strong>must</strong> be referenced in {@code AndroidManifest.xml}, or it will not be loaded and
  * used by the Android system.
  */
-public class EndangeredOrganismTracker extends Application {
+public class EndangeredOrganismsTracker extends Application {
 
   @Override
   public void onCreate() {
