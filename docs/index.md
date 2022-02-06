@@ -19,6 +19,7 @@ Photographs of Animal species in the areas the animal roams. In Plant Life there
 * The App. will have photographs for the user to see and download with up to date information of weather conditions of the region/area for that kind of species they search for. 
 * There will be a GPS tracker for the Endangered Species listed and with up to date details. 
 * There will be a comment section.
+* There will be a member/ employee log in.
  
 
 ## Persistent data
