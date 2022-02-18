@@ -7,7 +7,7 @@ Photographs of Animal species in the areas the animal roams. In Plant Life there
 ## Intended Users & User stories
 
 * A college biology research student  
-    > As a research biology student researching endangered organisms I want an easy to use App. save images and notes it is hard to keep track of notebooks and camera gear.  
+    > As a research biology student researching endangered organisms I want an easy to use App. to save images and notes it is hard to keep track of notebooks and camera gear.  
     
 * A Park Ranger employee
     > I'm a Park Ranger employee at a State park I protect endangered species and it's habitat. I need an App for documenting videos, photographs and for my daily notes.
